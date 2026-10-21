@@ -1,0 +1,71 @@
+/* Small frosted surfaces, with no full-page blur or animated optical filters. */
+.panel-interface #home .hero-copy .platform-row button,
+.panel-interface #home .hero-copy .watch-button{
+  position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#efe7ff16,#bddbff05 55%,#e4bfff0c),#241b3040;
+  border:1px solid #e7d9f440;
+  box-shadow:inset 0 1px 0 #ffffff2b,inset 0 -1px 0 #8d74a61c,0 8px 24px #07030d26;
+  backdrop-filter:blur(24px) saturate(1.2);
+  -webkit-backdrop-filter:blur(24px) saturate(1.2);
+  transition:background .2s,border-color .2s,box-shadow .2s,transform .2s;
+}
+.panel-interface #home .hero-copy .platform-row button::before,
+.panel-interface #home .hero-copy .watch-button::before{
+  content:"";position:absolute;inset:0 13% auto;height:1px;pointer-events:none;
+  background:linear-gradient(90deg,#fff0,#f1e9ff55,#fff0);
+}
+.panel-interface #home .hero-copy .platform-row button:hover,
+.panel-interface #home .hero-copy .watch-button:hover{
+  background:linear-gradient(135deg,#efe7ff23,#bddbff08 55%,#e4bfff15),#2d223944;
+  border-color:#eee2ff6b;box-shadow:inset 0 1px 0 #ffffff3b,0 10px 26px #07030d38;transform:translateY(-2px);
+}
+.panel-interface #home .hero-copy .platform-row button:active,
+.panel-interface #home .hero-copy .watch-button:active{transform:translateY(0) scale(.985)}
+.panel-interface #home .hero-copy .platform-row small{color:#d0bfdc}
+.panel-interface #home .hero-copy .platform-arrow{color:#e1ceeeb3}
+.panel-interface #home .hero-copy .watch-button{min-height:60px;padding:8px 17px 8px 9px;border-radius:999px;gap:12px;color:#f0e7f7;font-size:14px}
+.panel-interface #home .hero-copy .watch-icon{
+  flex:0 0 40px;width:40px;height:40px;border-radius:50%;border-color:#f2e8ff40;
+  background:linear-gradient(145deg,#f8efff24,#d3c0e30a);box-shadow:inset 0 1px 0 #ffffff20;
+}
+.panel-interface #home .hero-copy .watch-icon svg{width:15px;height:15px;margin-left:2px}
+.panel-interface #home .hero-copy .watch-button small{color:#bbaac9;font-size:10px;letter-spacing:.8px;margin-top:4px;white-space:nowrap}
+.panel-interface #home .hero-copy .watch-arrow{font-size:18px;line-height:1;margin-left:7px;color:#d6c3e4b3}
+
+/* Keep video and its poster on explicit, positive compositor layers. */
+.panel-interface #home .hero-art{z-index:0;isolation:isolate;transform:translateZ(0)}
+.panel-interface #home .hero-art .hero-poster,
+.panel-interface #home .hero-art video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 29%}
+.panel-interface #home .hero-art .hero-poster{z-index:0;pointer-events:none}
+.panel-interface #home .hero-art video{z-index:1;opacity:0;transform:translateZ(0);backface-visibility:hidden;transition:opacity .18s linear}
+.panel-interface #home .hero-art[data-video-state=playing] video,
+.panel-interface #home .hero-art[data-video-state=paused] video{opacity:1}
+.panel-interface #home .hero-art::after{z-index:2;pointer-events:none}
+
+@media(max-width:1100px) and (min-width:701px){
+  .panel-interface #home .hero-copy .watch-button{min-height:53px;font-size:13px;padding:7px 12px 7px 7px;gap:9px}
+  .panel-interface #home .hero-copy .watch-icon{width:36px;height:36px;flex-basis:36px}
+  .panel-interface #home .hero-copy .watch-arrow{margin-left:3px}
+}
+@media(max-width:700px){
+  .panel-interface #home .hero-actions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+  .panel-interface #home .hero-actions>.button{min-width:0;width:100%;padding-inline:12px;gap:12px}
+  .panel-interface #home .hero-copy .watch-button{min-width:0;min-height:50px;padding:7px 10px 7px 7px;gap:8px;border-radius:16px;font-size:11px}
+  .panel-interface #home .hero-copy .watch-icon{width:30px;height:30px;flex-basis:30px}
+  .panel-interface #home .hero-copy .watch-icon svg{width:12px;height:12px}
+  .panel-interface #home .hero-copy .watch-button small{font-size:9px;letter-spacing:0}
+  .panel-interface #home .hero-copy .watch-arrow{display:none}
+}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .panel-interface #home .hero-copy .platform-row button,.panel-interface #home .hero-copy .watch-button{background:#292033e6}
+}
+@media(max-width:370px){
+  .panel-interface #home .hero-actions>.button{font-size:12px;padding-inline:8px;gap:8px}
+  .panel-interface #home .hero-actions>.button svg{width:16px;height:16px}
+  .panel-interface #home .hero-copy .watch-button{font-size:10px;padding:6px 7px 6px 6px;gap:6px}
+  .panel-interface #home .hero-copy .watch-icon{width:26px;height:26px;flex-basis:26px}
+  .panel-interface #home .hero-copy .watch-button small{font-size:8px}
+}
+@media(prefers-reduced-motion:reduce){
+  .panel-interface #home .hero-copy .platform-row button,.panel-interface #home .hero-copy .watch-button,.panel-interface #home .hero-art video{transition:none;transform:none}
+}

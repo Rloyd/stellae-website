@@ -1,0 +1,46 @@
+﻿星黎宇宙官网 · 静态部署交付说明
+打包日期：2026-10-21
+同一网站同时适配手机与 PC。竖屏开场采用上、中、下排布并放大中间动画；初见星黎标题独立于收短的预告卡片。手机播放会请求全屏与横屏锁定，浏览器不支持时使用旋转播放器；PC 保留原有排布。
+羁绊碎片支持触摸与鼠标左右拖动，松手自动贴齐卡片；横滑不会误触翻面，轻点仍可翻面。
+
+1. 部署什么
+将 www 文件夹内的全部内容部署到官网的 Web 根目录，index.html 应直接位于根目录。
+这是无需构建的纯静态 HTML/CSS/JavaScript 网站，不需要 npm install、npm build、Node 服务或数据库。
+www/assets 必须完整上传并保持目录层级和文件名大小写。
+本包包含 3D 模型、着色器、Three.js 模块、视频、图片和必要的开源许可。
+
+2. 上线前填写的配置
+编辑 www/site-config.js：
+- downloads.ios.url：正式 TestFlight 邀请或 iOS 下载地址。目前为空，页面显示“入口准备中”。
+- downloads.android.url：正式 APK 下载地址。目前为空，页面显示“入口准备中”。
+- downloads 中 requirement、version：根据实际版本填写设备要求、版本号；目前为空。
+- legal.privacy、legal.terms：隐私政策与用户协议页面地址；目前为空，链接会隐藏。
+- roomUrl：当前为 https://www.stellae.world/room/，请确认线上已有 Room 服务可用。
+- legal.company、legal.icp：已填现有公司和备案信息，上线时确认。
+如果复用原官网域名，只更新首页静态资源，保留已有 /room/ 应用及其服务路由。
+本包不包含 /room/ 应用、APK 安装包、TestFlight 后台或任何服务端代码。
+
+3. 静态服务器设置
+- 默认首页：index.html。网站的 #home 等导航为 hash，不需要为这些 hash 设置 SPA 重写。
+- 通过 HTTP/HTTPS 提供文件，不要使用 file:// 双击打开；线上使用 HTTPS。
+- .js 使用 JavaScript MIME（text/javascript 或 application/javascript），.css 使用 text/css。
+- .mp4 使用 video/mp4，并支持 Range 字节请求，便于视频播放和拖动。
+- .glb 使用 model/gltf-binary 或 application/octet-stream；.frag 可使用 text/plain。
+- .webp 使用 image/webp，.svg 使用 image/svg+xml。
+- HTML、JS、CSS、site-config.js 建议 Cache-Control: no-cache，以便发布后重新验证。
+- 资源未做内容哈希命名，不要为这些文件启用长期 immutable 缓存；更换同名素材时刷新 CDN 缓存。
+- 如服务器使用 CSP，需允许本站脚本、样式、图片、视频、WebGL 着色器加载；当前 HTML 含内联脚本与样式，不能直接套用禁止内联的策略。
+
+4. 部署后的快速验收
+- 首次进入及刷新均从首页开始，加载动画后有开场镜头转动。
+- 首页角色视频、产品预告、五类功能实录可播放。
+- 三维主模型及背景阵列正常显示，板块切换正常。
+- 世界截图持续循环，鼠标拖动、触屏横滑与左右按钮正常。
+- 三张记忆卡片的幻光和翻面正常。
+- iOS、Android 按钮跳转正确；Room 链接和协议链接可访问。
+- 浏览器网络面板没有本站资源 404，控制台没有模块 MIME 错误。
+
+5. 交付范围与校验
+已排除本地预览服务、启动脚本、QA 截图、参考工程、原始 PNG、旧视频及重复素材。
+文件清单.json 记录 www 中每个文件的字节数和 SHA-256；源文件按原样复制，无额外编译。
+本包已经检查静态引用完整性、JS 语法及 ZIP 内容；生产域名、HTTPS 和实际下载地址需在部署环境验收。

@@ -1,0 +1,240 @@
+/* RhineLab-style fixed viewport: wheel input changes state, never document position. */
+html.panel-interface,html.panel-interface body{height:100%;width:100%;overflow:hidden!important;scroll-behavior:auto;overscroll-behavior:none}
+.panel-interface body{background:#100b18}
+.panel-interface #main{position:fixed;inset:0;z-index:1;overflow:hidden;touch-action:none}
+.panel-interface #main>section[data-page-panel]{position:absolute;inset:0;width:100%;height:100%;min-height:0;max-height:none;padding:0;margin:0;border:0;background:transparent;overflow:hidden;isolation:isolate;z-index:1}
+.panel-interface #main>section[data-active=true]{z-index:2}
+.panel-interface #main>section[data-page-panel]::before{content:"";position:absolute;inset:0 0 0 41%;z-index:-1;pointer-events:none;background:linear-gradient(90deg,#100b1800,#100b184d 24%,#100b1880 62%)}
+.panel-interface #main>section[data-content-side=left]::before{inset:0 41% 0 0;background:linear-gradient(270deg,#100b1800,#100b184d 24%,#100b1880 62%)}
+.panel-interface #main>section[data-page-panel]:not(:where(#home))>.wrap{position:absolute;left:41%;top:clamp(118px,14vh,160px);bottom:96px;width:55%;max-width:none;margin:0;padding:0;display:flex;flex-direction:column;justify-content:center;min-height:0;gap:0}
+.panel-interface #main>section[data-content-side=left]>.wrap{left:4%;width:55%}
+.panel-interface .reveal{opacity:1!important;transform:none}
+.panel-interface .header{height:96px;border-bottom:0;background:linear-gradient(#100b18ee,#100b1800);backdrop-filter:none}
+.panel-interface .section-heading{flex:none;display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin:0 0 25px}
+.panel-interface .section-heading h2,.panel-interface .faq-layout h2{font-size:clamp(26px,2.3vw,38px);line-height:1.45;letter-spacing:-.5px}
+.panel-interface .section-code{font-size:7px;letter-spacing:1.8px;margin-bottom:12px}
+.panel-interface .section-english{font-size:7px;letter-spacing:1.7px;margin-top:8px}
+.panel-interface .section-aside{font-size:10px;line-height:1.9;max-width:155px}
+.panel-interface .media-note{font-size:7px;line-height:1.9;margin-top:13px;flex:none}
+
+/* The 3D model is a full viewport layer, reframed to the free side of each panel. */
+.panel-interface .hero-scene{position:fixed;inset:0;width:100%;height:100dvh;z-index:0;pointer-events:none;mask-image:linear-gradient(90deg,#0000,#000 5%,#000 95%,#0000);-webkit-mask-image:linear-gradient(90deg,#0000,#000 5%,#000 95%,#0000);opacity:1}
+.panel-interface .hero-scene:before{content:"";position:absolute;inset:0 0 auto;height:140px;z-index:1;background:linear-gradient(#100b18ee,#100b1800);pointer-events:none}
+.panel-interface:not([data-active-panel=home]) .hero-scene:before{background:linear-gradient(#100b1880,#100b1800)}
+.panel-interface .hero-scene:after{background:linear-gradient(180deg,transparent 73%,#100b1880)}
+/* Broad eased feathering stays outside the UI, without a hard clipping edge. */
+.panel-interface:not([data-active-panel=home])[data-scene-side=left] .hero-scene{clip-path:none;mask-image:linear-gradient(90deg,#0000,#000 4%,#000 14%,#000000e6 18%,#000000ad 23%,#00000061 28%,#00000029 33%,#0000000a 37%,#0000 40%);-webkit-mask-image:linear-gradient(90deg,#0000,#000 4%,#000 14%,#000000e6 18%,#000000ad 23%,#00000061 28%,#00000029 33%,#0000000a 37%,#0000 40%)}
+.panel-interface:not([data-active-panel=home])[data-scene-side=right] .hero-scene{clip-path:none;mask-image:linear-gradient(90deg,#0000 60%,#0000000a 63%,#00000029 67%,#00000061 72%,#000000ad 77%,#000000e6 82%,#000 86%,#000 96%,#0000);-webkit-mask-image:linear-gradient(90deg,#0000 60%,#0000000a 63%,#00000029 67%,#00000061 72%,#000000ad 77%,#000000e6 82%,#000 86%,#000 96%,#0000)}
+.panel-interface .scene-input{display:block;position:fixed;top:180px;bottom:105px;left:0;width:38%;z-index:2;cursor:grab;touch-action:none}
+.panel-interface[data-scene-side=right] .scene-input{left:62%}
+.panel-interface .scene-input.is-dragging{cursor:grabbing}
+.panel-interface>.hero-archive-label{position:fixed;z-index:3;left:5%;top:126px;width:42%;max-width:none;text-shadow:0 1px 10px #100b18,0 1px 5px #100b18;pointer-events:none}
+.panel-interface>.hero-archive-label>span{font-size:7px;letter-spacing:1.9px}.panel-interface>.hero-archive-label>p{font-size:11px;letter-spacing:2px}
+.panel-interface[data-scene-side=right]>.hero-archive-label{left:66%;width:30%}
+.panel-interface .scene-motion-toggle{position:fixed;bottom:102px;left:5%;z-index:3;display:flex;gap:10px;align-items:center;background:#100b18bf;border:1px solid #cda4de30;border-radius:999px;min-height:34px;padding:9px 14px;color:#bba0ca;font-size:8px;letter-spacing:1px}
+.panel-interface[data-scene-side=right] .scene-motion-toggle{left:66%}
+.panel-interface[data-active-panel=home] .scene-motion-toggle{display:none}
+.panel-interface:has(dialog[open])>.scene-input{display:none}
+
+/* Preserve the approved hero layout in hero-scene.css: left archive/copy, right film. */
+.panel-interface #main>#home::before{display:none}
+.panel-interface[data-active-panel=home] .hero-scene{mask-image:linear-gradient(90deg,#000 28%,#000000eb 34%,#000000bf 42%,#0000007a 50%,#00000030 59%,#0000000a 66%,#0000 72%);-webkit-mask-image:linear-gradient(90deg,#000 28%,#000000eb 34%,#000000bf 42%,#0000007a 50%,#00000030 59%,#0000000a 66%,#0000 72%)}
+.panel-interface #home .hero-art{mask-image:linear-gradient(90deg,#0000,#0000000f 8%,#0000003d 18%,#00000080 30%,#000000c7 42%,#000 54%,#000 94%,#0000);-webkit-mask-image:linear-gradient(90deg,#0000,#0000000f 8%,#0000003d 18%,#00000080 30%,#000000c7 42%,#000 54%,#000 94%,#0000)}
+.panel-interface #home .hero-copy:before{inset:-96px -135px -78px -105px;background:radial-gradient(ellipse at 35% 58%,#100b1894 0%,#100b1870 34%,#100b1833 58%,#100b1800 78%);filter:blur(56px)}
+.panel-interface[data-active-panel=home] .scene-input{width:49%;bottom:52%}
+.panel-interface[data-active-panel=home]>.hero-archive-label{display:none!important}
+.panel-interface[data-active-panel=home]>.footer{display:none}
+@media(min-width:701px){
+  .panel-interface #home .hero-copy{width:52%;max-width:800px}
+  .panel-interface #home .hero-copy .eyebrow{font-size:10px;letter-spacing:1.9px}
+  .panel-interface #home .hero-pretitle{font-size:15px;letter-spacing:3.5px;margin-top:20px}
+  .panel-interface #home h1{font-size:clamp(38px,3.5vw,62px);line-height:1.25;margin:17px 0 21px;letter-spacing:-1.2px;text-shadow:0 2px 24px #100b1880}
+  .panel-interface #home .hero-description{font-size:13px;line-height:2;text-shadow:0 1px 9px #100b18}
+  .panel-interface #home .hero-actions{margin-top:26px;gap:28px}
+  .panel-interface #home .hero-actions>.button{min-width:232px;min-height:58px;padding:16px 27px;font-size:14px}
+  .panel-interface #home .watch-button{font-size:12px;gap:12px}.panel-interface #home .watch-button small{font-size:7px}
+  .panel-interface #home .watch-icon{width:44px;height:44px}
+  .panel-interface #home .platform-row{max-width:560px;gap:17px;margin-top:20px}
+  .panel-interface #home .platform-row button{min-height:80px;padding:16px 22px;font-size:17px;border-radius:19px}
+  .panel-interface #home .platform-row button svg{width:27px;height:27px}.panel-interface #home .platform-row small{font-size:9px}
+  /* Give the live film more of the hero while retaining the broad shared fade. */
+  .panel-interface #home .hero-art{width:68%;right:-3%;mask-image:linear-gradient(90deg,#0000,#0000000f 6%,#0000003d 14%,#00000080 24%,#000000c7 34%,#000 44%,#000 94%,#0000);-webkit-mask-image:linear-gradient(90deg,#0000,#0000000f 6%,#0000003d 14%,#00000080 24%,#000000c7 34%,#000 44%,#000 94%,#0000)}
+  .panel-interface[data-active-panel=home] .hero-scene{mask-image:linear-gradient(90deg,#000 18%,#000000eb 24%,#000000bf 32%,#0000007a 40%,#00000030 49%,#0000000a 56%,#0000 62%);-webkit-mask-image:linear-gradient(90deg,#000 18%,#000000eb 24%,#000000bf 32%,#0000007a 40%,#00000030 49%,#0000000a 56%,#0000 62%)}
+}
+@media(min-width:701px) and (max-width:1100px){
+  .panel-interface #home .hero-copy{width:55%;max-width:650px}
+  .panel-interface #home h1{font-size:clamp(30px,3.6vw,40px)}
+  .panel-interface #home .hero-copy .eyebrow{font-size:7px;letter-spacing:1.3px}
+  .panel-interface #home .hero-pretitle{font-size:12px}.panel-interface #home .hero-description{font-size:11px}
+  .panel-interface #home .hero-actions{gap:18px}.panel-interface #home .hero-actions>.button{min-width:194px;min-height:53px;font-size:12px;padding:14px 20px}
+  .panel-interface #home .watch-button{font-size:10px;gap:9px}.panel-interface #home .watch-icon{width:38px;height:38px}
+  .panel-interface #home .platform-row{max-width:450px}.panel-interface #home .platform-row button{min-height:73px;font-size:15px;padding:14px 17px}
+}
+
+/* Trailer and conversation each occupy one deliberate composition. */
+.panel-interface .film-frame{width:100%;aspect-ratio:16/9;min-height:0;max-height:calc(100dvh - 320px);flex:none;border-radius:20px}
+.panel-interface .film-frame>img{height:100%;width:100%;object-fit:cover}
+.panel-interface .film-label{left:20px;right:20px;bottom:18px}.panel-interface .film-label>span:first-child{font-size:17px}
+.panel-interface #main>#meet>.meet-layout{display:grid;grid-template-columns:1fr;grid-template-rows:auto minmax(190px,260px);gap:10px;align-content:center}
+.panel-interface .meet-copy h2{font-size:clamp(27px,2.4vw,40px);line-height:1.5}
+.panel-interface .meet-copy>p:not(.section-code){font-size:11px;line-height:1.9;margin-top:17px}.panel-interface .meet-copy .text-link{font-size:10px;margin-top:19px}
+.panel-interface .conversation{width:100%;height:260px;min-height:0;transform:scale(.78);transform-origin:center 35%}
+.panel-interface .conversation-avatar{width:130px;height:130px}.panel-interface .conversation-note{font-size:7px}
+
+/* App UI retains its diagonal composition and the phone's bleed. */
+.panel-interface #main>#experience>.wrap{justify-content:flex-start}
+.panel-interface .feature-navigation{width:100%;margin:0;gap:12px;flex:none}
+.panel-interface .feature-navigation .experience-top{width:calc(100% - 54px)}
+.panel-interface #feature-tabs{padding:6px;gap:2px}.panel-interface #feature-tabs button{flex:0 0 95px;min-height:59px;padding:13px 16px;font-size:16px}
+.panel-interface .feature-navigation .cycle-toggle{width:40px;height:40px;font-size:13px}
+.panel-interface .cycle-track{bottom:-9px;right:75px}
+.panel-interface .experience-section .experience-shell{--feature-height:100%;position:relative;flex:1;min-height:0;height:auto;margin:29px 0 16px;border-radius:26px}
+.panel-interface .experience-shell .feature-panel{height:100%;min-height:0}
+.panel-interface .experience-shell .feature-copy{height:100%;width:49%;padding:55px 12px 24px 25px}
+.panel-interface .experience-shell .feature-number{top:20px;left:25px;font-size:46px}
+.panel-interface .experience-shell .feature-en{font-size:7px;letter-spacing:1.2px;margin-bottom:15px}
+.panel-interface .experience-shell .feature-copy h3{font-size:clamp(20px,1.65vw,28px);line-height:1.55}
+.panel-interface .experience-shell .feature-description{font-size:10px;line-height:1.85;margin-top:18px;min-height:0;max-width:240px}
+.panel-interface .experience-shell .feature-copy>.pill{font-size:9px;min-height:38px;padding:10px 15px;margin-top:18px;gap:12px}.panel-interface .experience-shell .feature-copy>.pill svg{width:15px;height:15px}
+.panel-interface .experience-shell .feature-source{font-size:6px;line-height:1.7;margin-top:11px}
+.panel-interface .experience-shell .phone-stage{position:absolute;left:52%;top:50%;width:44%;height:auto;padding:0;transform:translateY(-50%)}
+.panel-interface .experience-shell .phone{width:clamp(177px,calc((100dvh - 330px)/2.15),300px);max-width:none;padding:6px;border-radius:34px}
+.panel-interface .experience-shell .phone video{border-radius:28px}
+.panel-interface .experience-shell .phone-orbit{width:220px;height:360px;max-width:90%}.panel-interface .experience-shell .phone-aura{width:260px;height:360px;max-width:100%}
+.panel-interface .phone-stage .recording-label{top:54px;right:-2%;font-size:5px}.panel-interface .phone-caption{font-size:5px;margin-top:13px}
+
+/* Scene selections fit within the frame; only their own tabs move horizontally. */
+.panel-interface #main>#world>.wrap{justify-content:flex-start}
+.panel-interface .scene-stage{flex:1;width:100%;min-height:0!important;max-height:100%;border-radius:24px}
+.panel-interface .scene-label{left:22px;top:22px;font-size:6px;letter-spacing:1px}.panel-interface .scene-title{left:25px;right:25px;top:24%}
+.panel-interface .scene-title h3{font-size:clamp(20px,2vw,31px);line-height:1.5}.panel-interface .scene-title>p{font-size:6px}
+.panel-interface .scene-controls{left:14px;right:14px;bottom:14px;padding:14px;border-radius:19px}
+.panel-interface .scene-controls h3{font-size:16px}.panel-interface .scene-controls-heading{margin-bottom:10px}.panel-interface .scene-choices{gap:9px}
+.panel-interface .scene-choice{height:clamp(76px,12vh,125px);border-radius:10px}.panel-interface .scene-choice-caption{left:10px;right:8px;bottom:10px}.panel-interface .scene-choice strong{font-size:10px}.panel-interface .scene-choice small{font-size:6px}.panel-interface .scene-choice em{font-size:5px;padding:4px 6px}
+.panel-interface .scene-cycle-progress{margin-top:10px}.panel-interface .scene-cycle-controls .cycle-toggle{width:27px;height:27px;font-size:10px}
+
+/* Existing holographic cards remain interactive, inside the left content area. */
+.panel-interface #main>#moments>.wrap{justify-content:center}
+.panel-interface .memory-gallery{width:100%;max-width:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px;padding:12px 0 0;margin:0;overflow:visible}
+.panel-interface .memory-card{width:100%;min-width:0;max-width:none;transform:none!important}
+.panel-interface .flash-name{font-size:clamp(13px,1.2vw,20px);letter-spacing:2px}.panel-interface .flash-heading{left:12px;right:12px;top:11px}
+.panel-interface .flash-en{font-size:5px;letter-spacing:1px}.panel-interface .flash-quote{font-size:9px;left:11px;right:11px;bottom:12px;line-height:1.7;padding-left:7px}
+.panel-interface .memory-caption{margin-top:15px;gap:5px;flex-wrap:wrap}.panel-interface .memory-caption>span:first-child{font-size:6px;padding-right:7px}.panel-interface .flash-hint{font-size:6px}.panel-interface .memory-expand{font-size:7px;padding:5px}
+.panel-interface .moments-section .text-link{font-size:9px;align-self:flex-start;margin-top:14px}
+
+/* Remaining panels keep the same two-column stage. */
+.panel-interface #room>img{position:absolute;width:55%;height:calc(100% - 210px);left:41%;top:115px;border-radius:24px;object-fit:cover;opacity:.35;mask-image:linear-gradient(90deg,#0000,#000 18%,#000 88%,#0000),linear-gradient(0deg,#0000,#000 25%,#000 85%,#0000);mask-composite:intersect}
+.panel-interface #room .room-shade{display:none}.panel-interface #main>#room>.room-copy{justify-content:center}
+.panel-interface .room-copy h2{font-size:clamp(28px,2.8vw,44px);line-height:1.5}.panel-interface .room-copy>p:not(.section-code){font-size:12px;line-height:2;margin-top:23px}.panel-interface .room-copy>.button{align-self:flex-start;margin-top:28px;font-size:12px;min-height:48px}
+.panel-interface #main>#faq>.faq-layout{display:flex;gap:25px;justify-content:center}
+.panel-interface .faq-intro{font-size:10px;line-height:1.8;margin-top:14px}.panel-interface .faq-list{min-height:0;max-height:calc(100dvh - 350px);overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#9162a54d transparent}
+.panel-interface .faq-list summary{padding:17px 3px;font-size:11px;gap:13px}.panel-interface .faq-list details p{font-size:10px;line-height:1.9;padding-left:28px;padding-bottom:17px}
+.panel-interface #download .download-aura{display:none}.panel-interface #main>#download>.wrap{text-align:center;align-items:center}
+.panel-interface #download .launch-signature{width:clamp(135px,20vh,205px);margin:0 auto 11px;background:transparent}.panel-interface #download .launch-status{font-size:5px;letter-spacing:2px;bottom:8px}
+.panel-interface #download h2{font-size:clamp(29px,2.7vw,43px);line-height:1.5;margin-top:10px}.panel-interface #download .wrap>p:not(.section-code){font-size:10px;margin-top:15px}
+.panel-interface #download .button{margin-top:25px;min-height:48px;font-size:12px;padding:14px 27px}.panel-interface .download-platforms{font-size:6px;margin-top:13px}
+.panel-interface .download-section .section-code{font-size:6px;margin-top:7px}
+
+/* Compact legal footer. Panel navigation uses the header, wheel and keyboard. */
+.panel-interface>.footer{position:fixed;left:5%;right:5%;bottom:9px;z-index:5;padding:0;background:transparent;border:0;height:13px}
+.panel-interface>.footer>.wrap{width:100%;max-width:none;margin:0}.panel-interface .footer-top{display:none}.panel-interface .footer-bottom{display:flex;justify-content:flex-end;align-items:center;gap:20px;padding:0;border:0;margin:0;font-size:6px;line-height:13px}.panel-interface .footer-bottom>a:last-child{display:none}
+.panel-interface #mobile-download{display:none!important}.panel-interface .entry-preview-tools{display:none}
+
+@media(max-width:1100px) and (min-width:701px){
+  .panel-interface .section-aside{display:none}.panel-interface .section-heading h2{font-size:27px}
+  .panel-interface .experience-shell .feature-copy{padding-left:17px}.panel-interface .experience-shell .feature-number{left:17px}.panel-interface .experience-shell .feature-copy h3{font-size:21px}.panel-interface .feature-description{font-size:9px}
+  .panel-interface #feature-tabs button{flex-basis:83px;min-height:53px;padding:12px;font-size:14px}.panel-interface .scene-choices{gap:6px}.panel-interface .scene-controls{padding:10px;left:10px;right:10px;bottom:10px}
+}
+@media(max-height:760px) and (min-width:701px){
+  .panel-interface #main>section[data-page-panel]:not(:where(#home))>.wrap{top:116px;bottom:91px}.panel-interface .section-heading{margin-bottom:20px}.panel-interface .section-code{margin-bottom:9px}.panel-interface .section-heading h2{font-size:28px}
+  .panel-interface .experience-shell .feature-description{font-size:9px;line-height:1.75;margin-top:12px}.panel-interface .experience-shell .feature-en{margin-bottom:10px}.panel-interface .experience-shell .feature-copy>.pill{margin-top:13px}
+  .panel-interface #feature-tabs button{min-height:49px;font-size:14px}.panel-interface .experience-section .experience-shell{margin-top:23px}
+  .panel-interface .conversation{transform:scale(.64)}.panel-interface #main>#meet>.meet-layout{grid-template-rows:auto 190px}.panel-interface .meet-copy h2{font-size:29px}
+  .panel-interface .memory-gallery{max-width:610px}.panel-interface .flash-quote{font-size:8px}.panel-interface .faq-list summary{padding-block:13px}
+}
+@media(max-width:700px){
+  .panel-interface .header{height:76px}.panel-interface #main>section[data-page-panel]:not(:where(#home))>.wrap,.panel-interface #main>section[data-content-side=left]>.wrap{left:6%;width:88%;top:105px;bottom:104px}
+  .panel-interface #main>section[data-page-panel]::before,.panel-interface #main>section[data-content-side=left]::before{inset:0;background:#100b1880}
+  .panel-interface .hero-scene{opacity:.42}.panel-interface>.hero-archive-label,.panel-interface .scene-motion-toggle,.panel-interface .scene-input{display:none!important}
+  .panel-interface .section-aside{display:none}.panel-interface .section-heading{margin-bottom:22px}.panel-interface .section-heading h2,.panel-interface .faq-layout h2{font-size:27px}
+  .panel-interface[data-active-panel=home] .hero-scene{opacity:1;mask-image:linear-gradient(90deg,#000,#000 30%,transparent 76%);-webkit-mask-image:linear-gradient(90deg,#000,#000 30%,transparent 76%)}
+  .panel-interface .film-frame{max-height:none}
+  .panel-interface .experience-section .experience-shell{margin:28px 0 25px;border-radius:22px;display:block}.panel-interface .experience-shell .feature-panel{display:block;height:100%;padding:0}
+  .panel-interface .experience-partition{display:block}.panel-interface .experience-shell .feature-copy{width:49%;height:100%;padding:48px 8px 20px 17px}.panel-interface .experience-shell .feature-copy:after{display:none}
+  .panel-interface .experience-shell .feature-number{left:17px;top:17px;font-size:40px}.panel-interface .experience-shell .feature-copy h3{font-size:18px;line-height:1.5}.panel-interface .experience-shell .feature-en{font-size:5px;letter-spacing:.7px;line-height:1.9}.panel-interface .experience-shell .feature-description{font-size:8px;line-height:1.8;margin-top:15px}
+  .panel-interface .experience-shell .feature-copy>.pill{font-size:7px;padding:9px 10px;gap:6px}.panel-interface .experience-shell .feature-source{font-size:5px}
+  .panel-interface .experience-shell .phone-stage{left:51%;top:50%;width:47%;height:auto;margin:0;padding:0;transform:translateY(-50%)}.panel-interface .experience-shell .phone{width:clamp(158px,calc((100dvh - 370px)/2.1),215px);border-radius:27px;padding:5px}.panel-interface .experience-shell .phone video{border-radius:22px}
+  .panel-interface #feature-tabs button{flex-basis:76px;min-height:51px;font-size:13px;padding:11px 13px}.panel-interface .feature-navigation{gap:9px}.panel-interface .feature-navigation .cycle-toggle{width:34px;height:34px}.panel-interface .feature-navigation .experience-top{width:calc(100% - 43px)}
+  .panel-interface .scene-controls{left:10px;right:10px;bottom:10px;padding:12px}.panel-interface .scene-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.panel-interface .scene-choice{width:auto;min-width:0;height:85px}.panel-interface .scene-controls h3{font-size:15px}.panel-interface .scene-choice strong{font-size:10px}.panel-interface .scene-choice small{font-size:6px}
+  .panel-interface .scene-label{left:17px;top:18px;font-size:5px}.panel-interface .scene-title{left:20px;top:18%}.panel-interface .scene-title h3{font-size:23px}
+  .panel-interface .memory-gallery{display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;gap:20px;padding:20px 16px 12px;margin-inline:-16px;width:calc(100% + 32px);max-width:none;scrollbar-width:none}
+  .panel-interface .memory-card{flex:0 0 76%;min-width:76%;max-width:310px;scroll-snap-align:center}.panel-interface .flash-name{font-size:20px}.panel-interface .flash-en{font-size:7px}.panel-interface .flash-quote{font-size:11px}.panel-interface .flash-hint{font-size:8px}.panel-interface .memory-expand{font-size:8px}.panel-interface .memory-caption{flex-wrap:nowrap;margin-top:15px}
+  .panel-interface .moments-section .media-note{font-size:6px;line-height:1.8}.panel-interface .room-copy h2{font-size:32px}.panel-interface #room>img{left:0;width:100%;top:80px;height:calc(100% - 190px);opacity:.25}
+  .panel-interface .faq-list{max-height:calc(100dvh - 345px)}.panel-interface .faq-list summary{font-size:11px;padding-block:15px}.panel-interface .faq-list details p{font-size:10px}
+  .panel-interface #download h2{font-size:32px}.panel-interface #download .launch-signature{width:185px}.panel-interface .meet-copy h2{font-size:29px}
+  .panel-interface>.footer{left:6%;right:6%;bottom:9px}.panel-interface .footer-bottom{font-size:5px;gap:10px;justify-content:center}.panel-interface .footer-bottom #company{display:none}
+}
+@media(prefers-reduced-motion:reduce){.panel-interface .hero-scene canvas{transition:none}}
+
+/* Give these quieter compositions a wider archive and a contained UI column. */
+@media(min-width:701px){
+  .panel-interface #main>section[data-panel-balance=scene]>.wrap{left:61%;width:35%}
+  .panel-interface #main>section[data-panel-balance=scene][data-content-side=left]>.wrap{left:4%;width:35%}
+  .panel-interface #room>img{left:61%;width:35%}
+  .panel-interface #main>section[data-panel-balance=scene]::before{inset:0 0 0 53%}
+  .panel-interface #main>section[data-panel-balance=scene][data-content-side=left]::before{inset:0 53% 0 0}
+  .panel-interface[data-panel-balance=scene][data-scene-side=left] .hero-scene{mask-image:linear-gradient(90deg,#0000,#000 4%,#000 34%,#000000e6 38%,#000000ad 43%,#00000061 48%,#00000029 53%,#0000000a 57%,#0000 60%);-webkit-mask-image:linear-gradient(90deg,#0000,#000 4%,#000 34%,#000000e6 38%,#000000ad 43%,#00000061 48%,#00000029 53%,#0000000a 57%,#0000 60%)}
+  .panel-interface[data-panel-balance=scene][data-scene-side=right] .hero-scene{mask-image:linear-gradient(90deg,#0000 40%,#0000000a 43%,#00000029 47%,#00000061 52%,#000000ad 57%,#000000e6 62%,#000 66%,#000 96%,#0000);-webkit-mask-image:linear-gradient(90deg,#0000 40%,#0000000a 43%,#00000029 47%,#00000061 52%,#000000ad 57%,#000000e6 62%,#000 66%,#000 96%,#0000)}
+  .panel-interface[data-panel-balance=scene] .scene-input{width:58%}
+  .panel-interface[data-panel-balance=scene][data-scene-side=right] .scene-input{left:42%}
+  .panel-interface[data-panel-balance=scene][data-scene-side=right]>.hero-archive-label{left:46%;width:50%}
+  .panel-interface[data-panel-balance=scene][data-scene-side=right] .scene-motion-toggle{left:46%}
+}
+
+/* Questions stay compact until a single answer is opened. No nested scroll area. */
+.panel-interface #main>#faq>.faq-layout{width:32%;bottom:65px;gap:21px;transition:width .65s cubic-bezier(.22,1,.36,1)}
+.panel-interface #main>#faq[data-expanded=true]>.faq-layout{width:50%}
+.panel-interface #faq .faq-list{overflow:visible;max-height:none;min-width:0;width:100%;flex:none;scrollbar-width:none}
+.panel-interface #faq .faq-list::-webkit-scrollbar{display:none}
+.panel-interface #faq .faq-list summary{font-size:12px;padding:16px 3px;gap:12px}
+.panel-interface #faq .faq-list details p{font-size:11px;line-height:1.9;padding:0 24px 16px 28px;overflow-wrap:anywhere}
+.panel-interface #faq .faq-list details[open]{border-color:#bb83ce55}
+.panel-interface:not([data-active-panel=home]) .scene-motion-toggle{bottom:40px}
+@media(min-width:701px){
+  .panel-interface[data-active-panel=faq][data-faq-expanded=false] .scene-input{left:40%;width:60%}
+  .panel-interface[data-active-panel=faq][data-faq-expanded=false]>.hero-archive-label{left:46%;width:50%}
+  .panel-interface[data-active-panel=faq][data-faq-expanded=false] .scene-motion-toggle{left:46%}
+}
+@media(max-height:760px){
+  .panel-interface #faq .faq-list summary{font-size:11px;padding-block:12px}
+  .panel-interface #faq .faq-list details p{font-size:10px;line-height:1.8;padding-bottom:13px}
+  .panel-interface #main>#faq>.faq-layout{gap:17px}
+}
+@media(max-width:700px){
+  .panel-interface #main>#faq>.faq-layout,.panel-interface #main>#faq[data-expanded=true]>.faq-layout{width:88%}
+}
+@media(prefers-reduced-motion:reduce){.panel-interface #main>#faq>.faq-layout{transition:none}}
+
+/* Compact App tabs belong to the card, with no separate progress/control row. */
+.panel-interface #experience .experience-shell{display:flex;flex-direction:column;margin-top:12px}
+.panel-interface #experience .feature-navigation{width:52%;margin:0;padding:18px 0 0 22px;gap:0;z-index:5}
+.panel-interface #experience .feature-navigation .experience-top{width:100%;padding:0}
+.panel-interface #experience #feature-tabs{padding:3px;gap:1px;background:#26182d80;border-color:#d19ade26}
+.panel-interface #experience #feature-tabs button{flex:1 0 0;min-width:0;min-height:34px;padding:7px 4px;font-size:clamp(9px,.65vw,12px)}
+.panel-interface #experience #feature-tabs button[aria-selected=true]:after{font-size:16px;right:-2px;bottom:-5px}
+.panel-interface #experience .feature-panel{flex:1;height:auto;min-height:0}
+/* Own horizontal card dragging while retaining tap-to-flip and page gestures. */
+.panel-interface .memory-gallery{position:relative}
+.panel-interface .memory-gallery.is-dragging{scroll-snap-type:none;cursor:grabbing}
+@media(max-width:700px){
+  .panel-interface .memory-gallery{touch-action:pan-y pinch-zoom;overscroll-behavior-x:contain;scroll-behavior:auto;user-select:none;-webkit-user-select:none;cursor:grab}
+  .panel-interface .memory-gallery .flash-card{touch-action:pan-y pinch-zoom}
+  .panel-interface .moments-section .media-note{font-size:11px;line-height:1.7;margin-top:10px}
+}
+@media(min-width:701px){
+  .panel-interface #experience .phone-stage{top:calc(50% - 30px)}
+}
+@media(max-width:700px){
+  .panel-interface #experience .feature-navigation{width:100%;padding:15px 16px 0}
+  .panel-interface #experience #feature-tabs button{min-height:35px;font-size:11px;padding:7px 5px}
+}

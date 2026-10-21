@@ -1,0 +1,174 @@
+/* Readable text sizes within the established fixed-viewport compositions. */
+.panel-interface{--copy-size:clamp(14px,.9vw,16px);--meta-size:clamp(11px,.68vw,12px)}
+.panel-interface body{font-size:16px}
+.panel-interface .desktop-nav a{font-size:16px}
+.panel-interface .desktop-nav a>span{font-size:10px;letter-spacing:.7px}
+.panel-interface .header-cta{font-size:14px;min-height:46px}
+.panel-interface .section-code{font-size:var(--meta-size);letter-spacing:1.2px}
+.panel-interface .section-english{font-size:11px;letter-spacing:1.1px;color:#b5a0bf}
+.panel-interface .section-heading h2,.panel-interface .faq-layout h2{font-size:clamp(32px,2.6vw,44px)}
+.panel-interface .section-aside{font-size:var(--copy-size);line-height:1.75;max-width:210px}
+.panel-interface .section-heading{gap:22px}
+.panel-interface .media-note{font-size:11px;line-height:1.75;color:#b7a1c3}
+.panel-interface .text-link{font-size:14px}
+.panel-interface>.hero-archive-label>span{font-size:11px;letter-spacing:1.1px}
+.panel-interface>.hero-archive-label>p{font-size:15px;line-height:1.7;letter-spacing:1px}
+
+/* Hero actions and supporting copy. */
+.panel-interface #home .hero-copy .eyebrow{font-size:12px;letter-spacing:1.1px}
+.panel-interface #home .hero-pretitle{font-size:18px;letter-spacing:2.5px}
+.panel-interface #home h1{font-size:clamp(40px,3.6vw,66px)}
+.panel-interface #home .hero-description{font-size:16px;line-height:1.85}
+.panel-interface #home .hero-actions>.button{font-size:16px;min-height:60px}
+.panel-interface #home .watch-button{font-size:14px}
+.panel-interface #home .watch-button small{font-size:11px;letter-spacing:.6px}
+.panel-interface #home .platform-row button{font-size:19px}
+.panel-interface #home .platform-row small{font-size:12px}
+.panel-interface #home .hero-message{width:360px}
+.panel-interface #home .hero-message p{font-size:16px;line-height:1.7}
+.panel-interface #home .message-name{font-size:13px}
+.panel-interface #home .message-name small,.panel-interface #home .message-note{font-size:11px;letter-spacing:.6px}
+.panel-interface #home .hero-bottom,.panel-interface #home .hero-edition{font-size:11px;letter-spacing:1px}
+.panel-interface #home .motion-control{font-size:12px}
+
+/* Trailer and the conversation layout. */
+.panel-interface .film-label>span:first-child{font-size:22px}
+.panel-interface .film-label small{font-size:11px;letter-spacing:1px}
+.panel-interface .film-label>span:last-child{font-size:14px}
+.panel-interface .meet-copy h2{font-size:clamp(32px,2.6vw,44px)}
+.panel-interface .meet-copy>p:not(.section-code){font-size:var(--copy-size);line-height:1.8}
+.panel-interface .meet-copy .text-link{font-size:14px}
+.panel-interface .conversation{transform:scale(.9)}
+.panel-interface .chat-bubble p{font-size:17px;line-height:1.7}
+.panel-interface .chat-bubble small{font-size:12px;letter-spacing:1px}
+.panel-interface .conversation-note{font-size:12px;letter-spacing:.5px}
+
+/* The compact feature card keeps its tabs and full-height phone. */
+.panel-interface #experience #feature-tabs button{font-size:14px;min-height:38px;padding:7px 3px}
+.panel-interface #experience .feature-navigation{width:53%;padding-left:20px}
+.panel-interface #experience .feature-copy{width:51%;padding:16px 12px 16px 24px}
+.panel-interface #experience .feature-number{top:8px;left:24px;font-size:48px}
+.panel-interface #experience .feature-en{font-size:11px;line-height:1.4;letter-spacing:0;margin-bottom:10px}
+.panel-interface #experience .feature-copy h3{font-size:clamp(23px,1.8vw,32px);line-height:1.45}
+.panel-interface #experience .feature-description{font-size:clamp(13px,.8vw,14px);line-height:1.7;margin-top:12px;max-width:100%}
+.panel-interface #experience .feature-copy>.pill{font-size:13px;min-height:42px;padding:10px 12px;margin-top:14px;gap:7px}
+.panel-interface #experience .feature-source{font-size:11px;line-height:1.6;margin-top:8px}
+.panel-interface #experience .phone-caption{font-size:11px;letter-spacing:.5px;margin-top:11px}
+.panel-interface #experience .recording-label{font-size:11px;letter-spacing:.5px}
+.panel-interface .world-gallery-footer p{font-size:12px;letter-spacing:.7px}
+.panel-interface .world-gallery-total{font-size:13px}
+
+/* Card titles, quotes and follow-up links remain readable over the artwork. */
+.panel-interface .flash-name{font-size:clamp(18px,1.4vw,24px);letter-spacing:1px}
+.panel-interface .flash-en{font-size:11px;letter-spacing:.6px}
+.panel-interface .flash-quote{font-size:13px;line-height:1.6}
+.panel-interface .moments-section .text-link{font-size:14px}
+.panel-interface .room-copy h2{font-size:clamp(34px,3vw,50px)}
+.panel-interface .room-copy>p:not(.section-code){font-size:16px;line-height:1.85}
+.panel-interface .room-copy>.button{font-size:16px;min-height:56px}
+
+/* Questions expand in width as before; larger type needs less empty padding. */
+.panel-interface .faq-intro{font-size:17px;line-height:1.8;margin-top:18px}
+.panel-interface #faq .faq-list summary{font-size:16px;line-height:1.6;padding:17px 3px;gap:15px}
+.panel-interface #faq .faq-list summary>span{font-size:12px}
+.panel-interface #faq .faq-list summary>i{font-size:24px}
+.panel-interface #faq .faq-list details p{font-size:15px;line-height:1.8;padding:0 24px 17px 32px}
+
+/* Enlarge the whole final invitation, including its emblem and metadata. */
+.panel-interface #download .launch-signature{width:clamp(200px,27vh,280px);margin-bottom:10px}
+.panel-interface #download .launch-status{font-size:11px;letter-spacing:1.2px;bottom:5px;color:#b7a5c2}
+.panel-interface #download .section-code{font-size:11px;letter-spacing:1.1px}
+.panel-interface #download h2{font-size:clamp(40px,3.6vw,62px);line-height:1.4;margin-top:12px}
+.panel-interface #download .wrap>p:not(.section-code){font-size:16px;line-height:1.7;margin-top:18px;letter-spacing:2px}
+.panel-interface #download .button{font-size:17px;min-height:60px;min-width:270px;margin-top:28px;padding:16px 30px}
+.panel-interface #download .download-platforms{font-size:11px;letter-spacing:1px;margin-top:16px}
+.panel-interface>.footer{height:auto;min-height:24px;bottom:14px}
+.panel-interface .footer-bottom{font-size:12px;line-height:1.7;gap:24px;flex-wrap:wrap;color:#b9a6c5;text-shadow:0 1px 5px #08050e}
+
+/* Download and navigation dialogs are part of the same reading scale. */
+.panel-interface .modal-intro{font-size:15px;line-height:1.8}
+.panel-interface .platform-option h3{font-size:22px}
+.panel-interface .platform-option p,.panel-interface .modal-note{font-size:14px;line-height:1.8}
+.panel-interface .platform-option .pill{font-size:14px;min-height:44px}
+.panel-interface .video-modal>p{font-size:12px}
+.panel-interface .menu-modal nav a{font-size:12px}
+.panel-interface .menu-modal nav a span{font-size:19px}
+
+@media(min-width:701px) and (max-width:1100px){
+  .panel-interface .desktop-nav a{font-size:14px}
+  .panel-interface .desktop-nav a>span{font-size:10px}
+  .panel-interface #home h1{font-size:clamp(30px,3.6vw,42px)}
+  .panel-interface #home .hero-copy .eyebrow{font-size:11px}
+  .panel-interface #home .hero-description{font-size:14px}
+  .panel-interface #experience #feature-tabs button{font-size:12px}
+  .panel-interface #experience .feature-copy h3{font-size:22px}
+}
+@media(min-width:701px) and (max-height:780px){
+  .panel-interface .section-heading{margin-bottom:16px}
+  .panel-interface .section-heading h2,.panel-interface .faq-layout h2{font-size:32px}
+  .panel-interface #main>#experience>.wrap{bottom:58px}
+  .panel-interface #experience .feature-copy{padding-top:10px;padding-bottom:12px}
+  .panel-interface #experience .feature-source{font-size:11px;line-height:1.5}
+  .panel-interface #experience .phone{width:clamp(177px,calc((100dvh - 265px)/2.15),255px)}
+  .panel-interface .meet-copy h2{font-size:32px}
+  .panel-interface .meet-copy>p:not(.section-code){font-size:14px}
+  .panel-interface .conversation{transform:scale(.82)}
+  .panel-interface #main>#faq>.faq-layout{top:108px;bottom:54px;gap:16px}
+  .panel-interface .faq-intro{font-size:15px;line-height:1.75;margin-top:14px}
+  .panel-interface #faq .faq-list summary{font-size:15px;padding-block:13px}
+  .panel-interface #faq .faq-list details p{font-size:14px;line-height:1.7;padding-bottom:14px}
+  .panel-interface #download .launch-signature{width:190px;margin-bottom:5px}
+  .panel-interface #download h2{font-size:46px;margin-top:8px}
+  .panel-interface #download .button{min-height:54px;margin-top:22px}
+  .panel-interface #download .wrap>p:not(.section-code){margin-top:14px}
+  .panel-interface #download .download-platforms{margin-top:12px}
+}
+@media(max-width:700px){
+  .panel-interface .header-cta{font-size:13px;min-height:42px;padding-inline:15px}
+  .panel-interface .section-code,.panel-interface .section-english{font-size:10px;letter-spacing:.8px}
+  .panel-interface .section-heading h2,.panel-interface .faq-layout h2{font-size:30px}
+  .panel-interface #home .hero-copy .eyebrow{font-size:10px;letter-spacing:.4px;gap:5px}
+  .panel-interface #home .hero-pretitle{font-size:15px;letter-spacing:2px}
+  .panel-interface #home h1{font-size:clamp(27px,7.1vw,36px)}
+  .panel-interface #home .hero-description{font-size:13px;line-height:1.8}
+  .panel-interface #home .hero-actions{gap:12px}
+  .panel-interface #home .hero-actions>.button{font-size:14px;min-width:165px;min-height:50px;padding:12px 17px}
+  .panel-interface #home .watch-button{font-size:11px;gap:7px}
+  .panel-interface #home .watch-button small{font-size:9px;letter-spacing:0}
+  .panel-interface #home .platform-row button{font-size:16px;padding:12px 13px}
+  .panel-interface #home .platform-row small{font-size:11px}
+  .panel-interface #home .hero-bottom,.panel-interface #home .motion-control{font-size:10px}
+  .panel-interface .media-note{font-size:10px}
+  .panel-interface .meet-copy h2{font-size:31px}
+  .panel-interface .meet-copy>p:not(.section-code){font-size:14px}
+  .panel-interface .conversation{transform:scale(.9)}
+  .panel-interface .chat-bubble p{font-size:15px}
+  .panel-interface .chat-bubble small,.panel-interface .conversation-note{font-size:11px}
+  .panel-interface #experience .feature-navigation{width:100%;padding:12px 14px 0}
+  .panel-interface #experience #feature-tabs button{font-size:13px;min-height:38px}
+  .panel-interface #experience .feature-copy{width:51%;padding:12px 9px 12px 15px}
+  .panel-interface #experience .feature-copy h3{font-size:20px;letter-spacing:0}
+  .panel-interface #experience .feature-en{font-size:9px}
+  .panel-interface #experience .feature-description{font-size:12px;line-height:1.7;margin-top:10px}
+  .panel-interface #experience .feature-copy>.pill{font-size:11px;padding:9px 10px;margin-top:12px}
+  .panel-interface #experience .feature-source{font-size:10px}
+  .panel-interface #experience .phone-caption{font-size:9px;letter-spacing:0}
+  .panel-interface .flash-name{font-size:22px}
+  .panel-interface .flash-en{font-size:10px}
+  .panel-interface .flash-quote{font-size:13px}
+  .panel-interface .room-copy h2{font-size:32px}
+  .panel-interface .room-copy>p:not(.section-code){font-size:15px}
+  .panel-interface .faq-intro{font-size:15px}
+  .panel-interface #faq .faq-list summary{font-size:14px;padding-block:14px}
+  .panel-interface #faq .faq-list details p{font-size:14px;padding-left:22px}
+  .panel-interface #download .launch-signature{width:185px}
+  .panel-interface #download .launch-status{font-size:10px}
+  .panel-interface #download .section-code{font-size:10px;letter-spacing:.5px}
+  .panel-interface #download h2{font-size:38px;line-height:1.4}
+  .panel-interface #download .button{font-size:16px;min-width:240px;min-height:55px;margin-top:24px}
+  .panel-interface #download .wrap>p:not(.section-code){font-size:15px}
+  .panel-interface #download .download-platforms{font-size:10px}
+  .panel-interface>.footer{left:5%;right:5%;bottom:10px}
+  .panel-interface .footer-bottom{font-size:10px;line-height:1.8;justify-content:center;gap:4px 12px}
+  .panel-interface .footer-bottom>span:nth-child(2){width:auto;order:0}
+}

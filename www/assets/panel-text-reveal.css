@@ -1,0 +1,5 @@
+/* Per-line redaction from RhineLabUI document-decryption.css, in Stellae's cold palette. */
+.document-redacted{position:relative}
+[data-page-panel] .document-redaction-window{position:absolute;display:block;overflow:hidden;pointer-events:none;user-select:none;z-index:2;background:none;-webkit-text-fill-color:initial}
+[data-page-panel] .document-redaction-ink{position:absolute;inset:0;display:block;background:#c5b7d8;will-change:transform}
+@media(prefers-reduced-motion:reduce){.document-redaction-window{display:none}}

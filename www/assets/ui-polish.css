@@ -1,0 +1,75 @@
+/* Retain layout and carousel improvements over the original purple App UI. */
+.header .brand{width:112px}
+.hero-art video{filter:none}.hero-grain{opacity:.055}
+.platform-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:520px;gap:16px;margin-top:28px}
+.platform-row button{width:100%;min-width:0;min-height:84px;padding:17px 22px;border-radius:20px;font-size:17px;gap:16px;text-align:left}
+.platform-row button svg{width:29px;height:29px;flex-shrink:0}.platform-row small{font-size:10px;margin-top:5px}.platform-arrow{font-size:21px}
+.modal{overflow-x:hidden;overflow-y:auto}.modal.crystal:before{inset:0}
+
+/* Larger App-style capsule tabs; the phone still bleeds beyond the diagonal card. */
+.feature-navigation{position:relative;display:flex;align-items:center;gap:20px;width:min(820px,100%);margin:0 0 64px;--cycle-progress:0}
+.feature-navigation .experience-top{position:relative;inset:auto;width:min(720px,calc(100% - 76px));max-width:none;min-height:0;padding:0;border:0;z-index:3}
+#feature-tabs{position:relative;display:flex;overflow-x:auto;scrollbar-width:none;scroll-padding:8px;padding:8px;gap:4px;width:100%;border:1px solid #d748ef26}
+#feature-tabs::-webkit-scrollbar{display:none}
+#feature-tabs button{flex:0 0 136px;min-height:80px;padding:18px 24px;font-size:20px;font-weight:750;white-space:nowrap}
+#feature-tabs button[aria-selected=true]:after{right:1px;bottom:-5px;font-size:27px}
+.cycle-toggle{width:52px;height:52px;font-size:17px;letter-spacing:1px;flex-shrink:0}
+.cycle-track{position:absolute;left:28px;right:100px;bottom:-13px;height:2px;background:#efd2ff13;border-radius:3px;overflow:hidden;pointer-events:none}
+.cycle-track i{display:block;width:100%;height:100%;background:linear-gradient(90deg,#b967cc,#f0b4f8);transform:scaleX(var(--cycle-progress,0));transform-origin:left}
+.experience-section .experience-shell{--feature-height:720px;margin-block:70px 84px;border-radius:38px}
+.experience-partition .feature-glass-pane{fill:url('#feature-glass-fill');stroke:none}
+.experience-partition .feature-glass-seam{fill:none;stroke:url('#feature-glass-edge');stroke-width:1.2;opacity:.55}
+.experience-shell .feature-copy{width:49%;padding:100px 15px 40px 65px}
+.experience-shell .feature-copy h3{font-size:40px;line-height:1.55;max-width:390px;letter-spacing:.4px}
+.experience-shell .feature-en{font-size:10px;letter-spacing:2px;margin-bottom:20px}
+.experience-shell .feature-description{font-size:13px;line-height:2;max-width:330px;min-height:70px;margin-top:26px}
+.experience-shell .feature-copy>.pill{font-size:12px;min-height:49px;padding:14px 22px;margin-top:24px}
+.experience-shell .feature-source{font-size:8px;margin-top:17px}
+.experience-shell .feature-number{top:46px;left:65px;right:auto;font-size:70px;letter-spacing:-3px;color:#f3d7ff13}
+.experience-shell .phone-stage{left:53%;width:40%}
+.experience-shell .phone{width:380px;border-radius:47px}
+.experience-shell .phone video{border-radius:39px}
+.phone-stage .recording-label{right:-10%;letter-spacing:1.2px}
+
+.scene-cycle-controls{display:flex;align-items:center;gap:13px}.scene-cycle-controls .cycle-toggle{width:36px;height:36px;font-size:12px}
+.scene-stage{--cycle-progress:0}.scene-cycle-progress{display:block;width:100%;height:2px;background:#d748ef20;border-radius:3px;margin-top:17px;overflow:hidden}.scene-cycle-progress i{display:block;width:100%;height:100%;transform:scaleX(var(--cycle-progress,0));transform-origin:left;background:linear-gradient(90deg,#d748ef,#f0b4f8)}
+.scene-previous{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+
+/* Original App launch shader and brand composition. */
+.download-section{background:#000;padding-top:45px}.download-aura{opacity:.18}
+.launch-signature{position:relative;width:min(340px,92vw);aspect-ratio:560/520;margin:0 auto 22px;background:#000;isolation:isolate}
+.launch-emblem{position:absolute;left:0;top:0;width:100%;height:84.6154%;max-width:none}
+.launch-status{position:absolute;bottom:14px;left:0;right:0;display:flex;align-items:center;justify-content:center;gap:8px;color:#ffffff66;font:8px var(--mono);letter-spacing:3px}
+.launch-status i{width:5px;height:5px;border-radius:50%;background:#22c55e}
+
+@media(min-width:901px){.experience-section{padding-top:80px}.experience-section .section-heading{margin-bottom:36px}}
+@media(max-width:1200px){
+  .experience-section .experience-shell{--feature-height:680px}
+  .experience-shell .phone{width:356px;border-radius:44px}.experience-shell .phone video{border-radius:36px}
+  .experience-shell .feature-copy{padding-left:52px}.experience-shell .feature-number{left:52px}
+  .experience-shell .feature-copy h3{font-size:34px;max-width:350px}
+  .experience-shell .feature-description{font-size:12px;max-width:300px}
+}
+@media(max-width:900px){
+  .header .brand{width:104px}
+  .feature-navigation{gap:14px;margin-bottom:58px}.feature-navigation .experience-top{width:calc(100% - 64px)}
+  #feature-tabs button{flex-basis:120px;min-height:72px;font-size:18px;padding:15px 20px}
+  .experience-section .experience-shell{--feature-height:580px;margin-block:60px 76px}
+  .experience-shell .feature-copy{width:49%;padding:85px 10px 35px 30px}.experience-shell .feature-number{left:30px;top:34px;font-size:60px}
+  .experience-shell .feature-copy h3{font-size:27px}.experience-shell .feature-en{font-size:8px;letter-spacing:1.5px}.experience-shell .feature-description{font-size:11px;max-width:260px;line-height:1.9}
+  .experience-shell .phone{width:290px;padding:7px;border-radius:37px}.experience-shell .phone video{border-radius:30px}
+  .phone-stage .recording-label{right:-7%;font-size:6px}
+}
+@media(max-width:700px){
+  .header .brand{width:100px}
+  .hero-actions{display:grid;grid-template-columns:1.25fr 1fr;gap:10px;align-items:center}.hero-actions>.button{width:100%;min-width:0;min-height:55px;padding:15px 16px;font-size:12px;gap:16px}.hero-actions>.button svg{width:18px;height:18px}.watch-button{font-size:9px;gap:7px}
+  .platform-row{max-width:100%;gap:11px;margin-top:20px}.platform-row button{min-height:74px;padding:14px 15px;border-radius:17px;font-size:14px;gap:11px}.platform-row button svg{width:24px;height:24px}.platform-row small{font-size:8px}.platform-arrow{font-size:17px}
+  .feature-navigation{gap:12px;margin-top:12px;margin-bottom:44px}.feature-navigation .experience-top{width:calc(100% - 54px)}.cycle-toggle{width:42px;height:42px;font-size:14px}
+  #feature-tabs{padding:6px;gap:3px}#feature-tabs button{flex-basis:106px;min-height:66px;font-size:17px;padding:14px 20px}.cycle-track{left:15px;right:70px;bottom:-12px}
+  .experience-section .experience-shell{margin-block:48px 80px;border-radius:27px}.experience-shell .feature-copy{width:100%;padding:78px 25px 35px}.experience-shell .feature-number{top:23px;left:25px;font-size:45px}
+  .experience-shell .feature-copy h3{font-size:28px;max-width:100%}.experience-shell .feature-en{font-size:7px;margin-bottom:15px}.experience-shell .feature-description{font-size:11px;max-width:100%;min-height:0;margin-top:20px}.experience-shell .feature-copy>.pill{min-height:43px;font-size:10px;padding:11px 18px;margin-top:20px}
+  .experience-shell .phone-stage{position:relative;left:auto;width:100%;margin-top:22px;padding-inline:20px}.experience-shell .phone{width:300px;max-width:100%;border-radius:39px}.experience-shell .phone video{border-radius:32px}.phone-stage .recording-label{right:22px;top:-14px;font-size:7px}
+  .scene-cycle-controls{gap:9px}.scene-cycle-controls .cycle-toggle{width:31px;height:31px}.scene-cycle-progress{margin-top:12px}
+  .launch-signature{width:min(300px,100%);margin-bottom:20px}.launch-status{font-size:7px;letter-spacing:2.5px}
+}
+@media(max-width:370px){.platform-row button{font-size:12px;padding:13px 12px;gap:8px}.platform-row button svg{width:22px;height:22px}.platform-row small{font-size:7px}.platform-row .platform-arrow{font-size:15px}.memory-gallery{margin-inline:-18px}}

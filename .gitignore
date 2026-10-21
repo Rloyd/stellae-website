@@ -1,0 +1,11 @@
+.env
+.env.*
+node_modules/
+qa/
+.reference/
+*.log
+*.zip
+*.rar
+*.7z
+.DS_Store
+Thumbs.db

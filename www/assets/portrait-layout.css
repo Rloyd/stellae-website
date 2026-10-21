@@ -1,0 +1,74 @@
+/* The same page responds to narrow portrait windows; desktop keeps its composition. */
+.trailer-player,.trailer-stage{position:relative}
+.trailer-stage>.close{top:-43px;right:0}
+.trailer-stage>p{text-align:center;font:12px/1.6 var(--font);letter-spacing:1px;color:#b794c2;padding-top:14px}
+
+/* A landscape player remains usable even if the browser denies orientation lock. */
+.panel-interface #trailer-dialog.landscape-playback{position:fixed;inset:0;width:100%;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;border-radius:0;overflow:hidden;background:#000}
+.panel-interface #trailer-dialog.landscape-playback::backdrop{background:#000;backdrop-filter:none}
+.landscape-playback .trailer-player{position:fixed;inset:0;width:100%;height:100%;background:#000;overflow:hidden}
+.landscape-playback .trailer-stage{position:absolute;left:50%;top:50%;width:var(--player-width,100vw);height:var(--player-height,100dvh);transform:translate(-50%,-50%) rotate(var(--player-rotation,0deg));transform-origin:center;background:#000}
+.panel-interface #trailer-dialog.landscape-playback #trailer-video{display:block;width:100%;height:100%;max-height:none;object-fit:contain;background:#000}
+.panel-interface #trailer-dialog.landscape-playback .close{top:max(12px,env(safe-area-inset-top));right:max(12px,env(safe-area-inset-right));width:44px;height:44px;background:#100b1880;border-color:#ffffff66;z-index:4}
+.landscape-playback .trailer-stage>p:not(#trailer-error){position:absolute;left:max(18px,env(safe-area-inset-left));top:20px;max-width:70%;margin:0;padding:5px 9px;font-size:11px;background:#0006;border-radius:6px;pointer-events:none}
+.landscape-playback #trailer-error{position:absolute;bottom:65px;left:20px;right:20px;background:#100b18d9;padding:12px;border-radius:10px}
+.trailer-player:fullscreen{background:#000}
+.trailer-player:-webkit-full-screen{background:#000}
+
+@media(max-width:700px) and (orientation:portrait){
+  /* Three vertical bands: brand / generous animation / credit and progress. */
+  .rhine-opening{width:720px;height:var(--rl-height,1280px)}
+  .rl-background>svg{left:600px;top:calc(1200px + var(--rl-height,1280px)/2 - 540px)}
+  .rl-brand{left:40px;top:62px;width:300px}
+  .rl-brand h1{font-size:36px;line-height:42px}
+  .rl-brand>div{font-size:19px;line-height:26px}
+  .rl-brand p{width:260px;font-size:30px;line-height:35px}
+  .rl-access{left:36px;top:calc(50% - 20px);width:648px;margin:0;text-align:center;font-size:28px;line-height:38px;letter-spacing:1px}
+  .rl-logo{left:180px;top:calc(50% - 215px);width:360px;height:283px}
+  .rl-logo-wordmark{top:250px;width:230px}
+  .rl-auth{left:36px;top:calc(50% + 152px);width:648px;justify-content:center;font-size:28px;line-height:38px;gap:13px;letter-spacing:1px}
+  .rl-auth>span:first-child{font-size:19px}
+  .rl-scan{width:720px;height:100%}
+  .rl-scan>svg{position:absolute;left:-600px;top:calc(50% - 540px);width:1920px;height:1080px;transform:scale(.66);transform-origin:center}
+  .rl-welcome{left:120px;top:calc(50% - 225px);height:460px}
+  .rl-welcome-panel{top:-20px;height:480px}
+  .rl-welcome-database{font-size:32px}
+  .rl-welcome-logo{left:90px;top:190px;width:300px;height:270px}
+  .rl-welcome-logo svg{height:180px}
+  .rl-welcome-wordmark-reveal{width:190px;margin-top:10px}
+  .rl-powered{left:0;right:0;bottom:160px;justify-content:center;font-size:20px;line-height:28px;letter-spacing:.5px}
+  .rl-mobile-enter{top:max(20px,env(safe-area-inset-top));right:20px;min-height:44px;padding:12px 16px;font-size:11px;border-radius:999px}
+  .intro-cinematic .rl-progress-host{width:min(230px,calc(100% - 80px));bottom:max(32px,calc(env(safe-area-inset-bottom) + 24px));opacity:.8}
+  .intro-cinematic .entry-progress-meta,.intro-cinematic .entry-progress-meta>span:last-child{font-size:11px;letter-spacing:1px}
+  .intro-cinematic .entry-progress-track{height:2px}
+
+  /* The heading stays separate above a shorter, fully clickable cropped cover. */
+  .panel-interface #main>#trailer>.wrap{left:6%;width:88%;top:max(102px,calc(env(safe-area-inset-top) + 90px));bottom:max(62px,calc(env(safe-area-inset-bottom) + 50px));display:flex;flex-direction:column;justify-content:center;overflow:visible}
+  .panel-interface #trailer .film-frame{position:relative;inset:auto;width:100%;height:auto;max-height:calc(100dvh - 330px);aspect-ratio:6/5;flex:none;border-radius:22px}
+  .panel-interface #trailer .film-frame>img{position:absolute;left:50%;top:50%;width:auto;max-width:none;height:160%;object-fit:contain;transform:translate(-34.375%,-50%);filter:brightness(.82) saturate(.8)}
+  .panel-interface #trailer .film-frame:hover>img{transform:translate(-34.375%,-50%)}
+  .panel-interface #trailer .film-shade{background:linear-gradient(0deg,#100b18f5, #100b1899 20%,transparent 57%,#100b181a),linear-gradient(90deg,transparent 82%,#100b18 92%)}
+  .panel-interface #trailer .section-heading{position:static;display:block;margin:0 0 22px}
+  .panel-interface #trailer .section-heading h2{font-size:32px;line-height:1.35;letter-spacing:-.5px;text-shadow:0 2px 15px #0008}
+  .panel-interface #trailer .section-code{font-size:10px;letter-spacing:.8px;margin-bottom:9px;color:#d7c6e3}
+  .panel-interface #trailer .section-english{font-size:10px;letter-spacing:.8px;margin-top:7px;color:#c9b5d4}
+  .panel-interface #trailer .film-play{left:50%;top:52%;width:62px;height:62px;background:#1d142c80;border-color:#f7e2ffb3;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+  .panel-interface #trailer .film-play svg{width:22px;height:22px}
+  .panel-interface #trailer .film-label{left:23px;right:23px;bottom:23px;gap:12px}
+  .panel-interface #trailer .film-label>span:first-child{font-size:21px;letter-spacing:1px}
+  .panel-interface #trailer .film-label small{font-size:10px;letter-spacing:1px;margin-top:6px}
+  .panel-interface #trailer .film-label>span:last-child{font-size:13px;white-space:nowrap}
+  .panel-interface #trailer .film-label>span:last-child>span{font-size:20px;margin-left:12px}
+  .panel-interface #trailer .media-note{position:static;font-size:11px;line-height:1.7;margin:14px 0 0;text-align:center;color:#c9b5d4;text-wrap:balance}
+}
+@media(max-width:700px) and (orientation:portrait) and (max-height:740px){
+  .panel-interface #main>#trailer>.wrap{top:94px;bottom:max(54px,calc(env(safe-area-inset-bottom) + 44px))}
+  .panel-interface #trailer .section-heading h2{font-size:29px}
+  .panel-interface #trailer .film-play{width:56px;height:56px}
+  .panel-interface #trailer .film-label{left:19px;right:19px;bottom:19px}
+  .panel-interface #trailer .media-note{font-size:10px}
+}
+@media(max-width:700px) and (orientation:portrait) and (max-height:600px){
+  .panel-interface #trailer .film-label>span:first-child{font-size:18px}
+  .panel-interface #trailer .film-play{width:50px;height:50px}
+}

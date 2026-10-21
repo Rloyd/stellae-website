@@ -1,0 +1,21 @@
+#entry-loader{position:fixed;inset:0;z-index:1000;overflow:hidden;background:#000;color:#eae1ef;opacity:1;transition:opacity .48s ease}
+#entry-loader[data-state=leaving]{display:grid;place-items:center;opacity:0;pointer-events:none}
+.entry-composition{width:min(360px,calc(100vw - 64px));display:flex;flex-direction:column;align-items:center;transform:translateY(-16px)}
+.entry-artwork{position:relative;width:100%;aspect-ratio:560/440}
+.entry-artwork canvas,.emblem-fallback{position:absolute;inset:0;width:100%;height:100%}
+.entry-artwork canvas{opacity:0;transition:opacity .2s}.entry-artwork canvas[data-state=ready]{opacity:1}
+.entry-artwork:has(canvas[data-state=ready]) .emblem-fallback{visibility:hidden}
+.emblem-fallback{opacity:.8}
+.entry-progress{width:244px;max-width:88%;margin-top:34px}
+.entry-progress-meta{display:flex;justify-content:space-between;align-items:center;gap:24px;margin-bottom:13px;font:10px/1.6 var(--font);letter-spacing:2px;color:#b3a5bd}
+.entry-progress-meta>span:last-child{font:10px var(--mono);letter-spacing:1px;color:#e6daec;font-variant-numeric:tabular-nums}
+.entry-percent-unit{margin-left:4px;color:#85788f;font-size:8px}
+.entry-progress-track{height:2px;border-radius:2px;overflow:hidden;background:#d1b8e31f}
+#entry-progress-fill{display:block;width:100%;height:100%;transform:scaleX(var(--entry-progress,0));transform-origin:left;background:linear-gradient(90deg,#b55bd0,#f0d7fa 68%,#b9f5ff);box-shadow:0 0 12px #d8b2ff66;transition:transform .12s linear}
+.entry-system{position:absolute;bottom:max(40px,6.4svh);left:24px;right:24px;display:flex;align-items:center;justify-content:center;gap:9px;font:9px var(--mono);letter-spacing:3px;color:#ffffff66}
+.entry-system i{width:5px;height:5px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px #22c55e33}
+html[data-entry=ready] main{animation:entry-reveal .65s ease both}
+@keyframes entry-reveal{from{opacity:0}to{opacity:1}}
+@media(max-width:700px){.entry-composition{width:min(300px,calc(100vw - 64px));transform:translateY(-22px)}.entry-progress{width:215px;margin-top:27px}.entry-progress-meta{font-size:9px;letter-spacing:1.5px}.entry-system{font-size:7px;letter-spacing:2.5px}}
+@media(max-height:520px){.entry-composition{width:230px;transform:translateY(-16px)}.entry-progress{margin-top:12px}.entry-system{bottom:20px;font-size:7px}}
+@media(prefers-reduced-motion:reduce){#entry-loader,.entry-artwork canvas,#entry-progress-fill{transition:none}html[data-entry=ready] main{animation:none}}

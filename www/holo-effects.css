@@ -1,0 +1,37 @@
+/* Optical foil stays below the original title/quote so the app UI remains legible. */
+.flash-shader{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;mix-blend-mode:screen;opacity:.97;z-index:1}
+.flash-card[data-holo=webgl] .flash-holo{opacity:0}
+.flash-holo{background:repeating-linear-gradient(var(--foil-angle,118deg),#ff7cd900 0%,#ff7cd966 12%,#82beff88 23%,#fff1a080 34%,#8af5dc70 45%,#ff7cd900 58%);background-size:200% 200%;mix-blend-mode:color-dodge}
+.flash-card[data-holo=css] .flash-holo{animation:holo-idle 8s ease-in-out infinite alternate}
+.flash-glare{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse at var(--glare-x,60%) var(--glare-y,25%),#fffaeaa8,transparent 46%);mix-blend-mode:soft-light;opacity:calc(.12 + var(--surface-active,0)*.25);transition:opacity .35s}
+.flash-grating{position:absolute;inset:0;pointer-events:none;z-index:1;background:repeating-linear-gradient(118deg,#ffffff00 0px 1.3px,#d3c0ff14 1.4px 2px);mix-blend-mode:screen;opacity:calc(.12 + var(--surface-active,0)*.22);mask-image:radial-gradient(ellipse at var(--glare-x,60%) var(--glare-y,25%),#000,transparent 75%);-webkit-mask-image:radial-gradient(ellipse at var(--glare-x,60%) var(--glare-y,25%),#000,transparent 75%)}
+.flash-front .flash-face-clip>img{left:-4%;top:-4%;width:108%;height:108%;max-width:none;transform:translate(var(--art-x,0px),var(--art-y,0px));transition:transform 350ms cubic-bezier(.2,.75,.25,1)}
+.flash-heading,.flash-quote{z-index:2;transform:translate(var(--text-x,0px),var(--text-y,0px));transition:transform 350ms cubic-bezier(.2,.75,.25,1)}
+.is-interacting .flash-front .flash-face-clip>img,.is-interacting .flash-heading,.is-interacting .flash-quote{transition:none}
+.flash-rarity{z-index:2;box-shadow:0 0 8px #ffffff7a}
+.flash-card[data-preview=true]{touch-action:none}
+.flash-art-depth{position:absolute;inset:0;display:block;overflow:hidden;isolation:isolate;perspective:900px}
+.flash-card[data-layered=loading] .flash-art-depth{visibility:hidden}
+.flash-card .flash-art-depth>.flash-depth-layer{position:absolute;left:-8%;top:-8%;width:116%;height:116%;max-width:none;object-fit:cover;pointer-events:none;will-change:transform;transition:transform 140ms linear;transform-origin:50% 50%}
+.flash-card .flash-art-depth>.flash-depth-background{z-index:0;transform:translate(calc(var(--view-x,0)*-20px),calc(var(--view-y,0)*-14px))}
+.flash-card .flash-art-depth>.flash-depth-subject{z-index:1;transform:translate(calc(var(--view-x,0)*16px),calc(var(--view-y,0)*11px)) translate(0,var(--subject-offset-y,0%)) scale(var(--subject-scale,1))}
+.flash-card .flash-art-depth>.flash-depth-foreground{z-index:2;transform:translate(calc(var(--view-x,0)*40px),calc(var(--view-y,0)*28px))}
+.flash-card .flash-art-depth>.flash-depth-plane{z-index:var(--layer-order);transform:translate(calc(var(--view-x,0)*var(--layer-x)),calc(var(--view-y,0)*var(--layer-y)))}
+.flash-card .flash-art-depth>.flash-depth-rainfall{left:-2%;top:-2%;width:104%;height:104%;object-fit:fill}
+.flash-card.is-interacting .flash-art-depth>.flash-depth-layer{transition:none}
+.flash-card[data-layered=true] .flash-text-shade{z-index:1}
+.flash-click-guide{position:absolute;z-index:6;left:58%;top:63%;width:38px;height:44px;pointer-events:none;opacity:1;transition:opacity .35s,visibility .35s;animation:guide-nudge 3.2s ease-in-out infinite;filter:drop-shadow(0 2px 5px #200a2ea0)}
+.flash-click-guide svg{width:36px;height:44px;display:block;overflow:visible;transform-origin:5px 3px;animation:guide-press 3.2s ease-in-out infinite}
+.flash-click-guide path{fill:#fff9ff;stroke:#68275f;stroke-width:1.2;stroke-linejoin:round}
+.guide-click-label{position:absolute;top:38px;left:3px;display:block;padding:7px 11px;border-radius:999px;white-space:nowrap;background:#25112fe8;border:1px solid #f5c5f088;color:#fff3ff;font-size:10px;font-weight:650;letter-spacing:.7px;box-shadow:0 0 15px #dd8af12b}
+.guide-click-ring{position:absolute;left:5px;top:4px;width:24px;height:24px;border:1px solid #ffddff;border-radius:50%;opacity:0;transform:translate(-50%,-50%) scale(.3);animation:guide-click 3.2s ease-out infinite}
+.guide-click-ring-second{animation-delay:.16s;border-color:#d88df1}
+.memory-gallery.is-discovered .flash-click-guide{opacity:0;visibility:hidden;animation:none}
+.flash-card:focus-visible{outline-color:#ffd2f8;outline-offset:9px}
+@keyframes holo-idle{from{background-position:10% 0%}to{background-position:90% 100%}}
+@keyframes guide-nudge{0%,15%,100%{transform:translate(6px,7px)}30%,70%{transform:translate(0,0)}}
+@keyframes guide-press{0%,34%,55%,100%{transform:scale(1)}42%{transform:scale(.82)}}
+@keyframes guide-click{0%,35%{opacity:0;transform:translate(-50%,-50%) scale(.3)}43%{opacity:.9}65%,100%{opacity:0;transform:translate(-50%,-50%) scale(2.5)}}
+@media(max-width:700px){.flash-click-guide{left:57%;top:64%}.guide-click-label{font-size:9px;padding:7px 10px}.flash-click-guide svg{width:33px;height:41px}}
+@media(prefers-reduced-motion:reduce){.flash-click-guide,.flash-click-guide svg,.guide-click-ring,.flash-card[data-holo=css] .flash-holo{animation:none!important}.flash-front .flash-face-clip>img,.flash-heading,.flash-quote{transform:none!important}}
+@media(prefers-reduced-motion:reduce){.flash-card .flash-art-depth>.flash-depth-layer{transform:none!important;transition:none!important}}
