@@ -53,13 +53,13 @@
       info.append(title,details);option.append(info);
       const url = safeUrl(item.url);
       const action=document.createElement(url?'a':'button');action.className='pill';
-      if(url){action.href=url;action.target='_blank';action.rel='noopener';action.textContent=key==='ios'?'前往 TestFlight ↗':'前往下载 ↗';}
+      if(url){action.href=url;action.target='_blank';action.rel='noopener';action.textContent='前往共创空间 ↗';}
       else {action.disabled=true;action.textContent='入口准备中';}
       option.append(action);container.append(option);
     });
     $('#download-note').textContent=platforms.some(key=>!safeUrl(config.downloads[key].url))
-      ?'当前公测下载入口尚未开放。正式链接、版本号和安装要求准备好后，将在这里更新。'
-      :'请按公测入口的步骤安装，设备要求与开放功能以版本说明为准。';
+      ?'内测入口准备中。可在 QQ 搜索官方共创群 1094452643，了解开放情况。'
+      :'官方 QQ 共创群：1094452643。进入星黎频道，点击「共创群」查看入群方式；资格与安装以群内公告为准。';
     openDialog(downloadDialog);
   };
   $$('[data-download]').forEach(button=>button.addEventListener('click',()=>openDownloads()));

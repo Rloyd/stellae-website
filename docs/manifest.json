@@ -1,8 +1,8 @@
 {
-  "generated": "2026-10-21",
+  "generated": "2026-10-23",
   "webroot": "www",
   "fileCount": 89,
-  "totalBytes": 46561552,
+  "totalBytes": 50425725,
   "files": [
     {
       "path": "HOLO-REFERENCE-LICENSE.txt",
@@ -11,8 +11,8 @@
     },
     {
       "path": "app.js",
-      "bytes": 25964,
-      "sha256": "d6c427acc84e40b92488ce753e82fc0df80b8f4401b6e60e23aa6e7018c99cd2"
+      "bytes": 25960,
+      "sha256": "7fbb159b284414025ce7ec091f01822866041e39c556d64736c6a9eedf200440"
     },
     {
       "path": "assets/archive-coverage.js",
@@ -36,13 +36,13 @@
     },
     {
       "path": "assets/closeness.jpg",
-      "bytes": 25549,
-      "sha256": "156dbe0bf60729701d6d76f77af73c7c96c8c243a18489288ca4cee726ba7464"
+      "bytes": 70006,
+      "sha256": "187b3a0a4b6e9760e179af6903a0b300b6b0646446ce2e9bbb00527237537f2f"
     },
     {
       "path": "assets/closeness.mp4",
-      "bytes": 248792,
-      "sha256": "1cbdf356e37ba7a1e317deb697cb44cdbe22952c00e5c562201ff50f2dec6a65"
+      "bytes": 1269198,
+      "sha256": "bfd679412ee82edc35829e6536a5db9ecb9db9d1d56066a2eedd8c3e2bc351b4"
     },
     {
       "path": "assets/entry-cinematic.css",
@@ -196,13 +196,13 @@
     },
     {
       "path": "assets/memory.jpg",
-      "bytes": 27976,
-      "sha256": "98b7a2be9f6e97126067dcbddff94f0bcd8522a2c887a4dc90402c8d5020a1fe"
+      "bytes": 55096,
+      "sha256": "36a2d4cab52036938758c6a45fc8f85288ff957c1e50d4cff517af2b272a7a62"
     },
     {
       "path": "assets/memory.mp4",
-      "bytes": 202200,
-      "sha256": "0df2830ff9491265d586cbbe261b5754b7c73dd8434b78c8e8d6a1c23ea6acef"
+      "bytes": 413880,
+      "sha256": "bc101c16450cf1ac67f960709f3e1ffe483bbc90a1bad7f7c837ecb35245f6d5"
     },
     {
       "path": "assets/night-room-1.webp",
@@ -211,13 +211,13 @@
     },
     {
       "path": "assets/outfit.jpg",
-      "bytes": 45329,
-      "sha256": "dc07e14160f82314dca20a80694872bc8b416137375468698e55cd215c6fd3cd"
+      "bytes": 82988,
+      "sha256": "c44624fc0ec37e8e1217a861db7ed706d74ea5148f73c4a58acebaf32764f746"
     },
     {
       "path": "assets/outfit.mp4",
-      "bytes": 532452,
-      "sha256": "57a548f88328acde143077ccbb2125d939957786732fb61dc9975eeb5dfc4245"
+      "bytes": 1136125,
+      "sha256": "655af9d9254a596b1dec79fa770088bc998add1b0c991f79bfa0d371b0452195"
     },
     {
       "path": "assets/panel-text-reveal.css",
@@ -261,13 +261,13 @@
     },
     {
       "path": "assets/scene.jpg",
-      "bytes": 37223,
-      "sha256": "8482df7d4df4477ee5726a79e653316bcaef8a7de5796cbb446b1218bd99b166"
+      "bytes": 102573,
+      "sha256": "c0c3bd7ae623d4707b5e6668038e38c52e8dd78c53e1c6f995844106fe5eca90"
     },
     {
       "path": "assets/scene.mp4",
-      "bytes": 398701,
-      "sha256": "0eb981ccb59ce8a04431261d4856c84ba54f7f046217bf5d96ca07f3fdb7a14a"
+      "bytes": 1980019,
+      "sha256": "d099628282677bdbe90299f1a7f5f46de2bc7f3f18dc03cadcb0a21bd1e6f356"
     },
     {
       "path": "assets/site-polish.js",
@@ -276,23 +276,23 @@
     },
     {
       "path": "assets/startrack.jpg",
-      "bytes": 30569,
-      "sha256": "607434afef5b0e222dfe251946d765f7db08695b8c9bc1b0ca68d94e9927fcd8"
+      "bytes": 58605,
+      "sha256": "d802a798ed0a43c0de688eb039609deb4d7af399edcdf9e8b0b845838ef20939"
     },
     {
       "path": "assets/startrack.mp4",
-      "bytes": 240289,
-      "sha256": "950c833bd6aa97ca5ba9bf5b4fa00a2214b4b32becddb5cfe65f153478629af6"
+      "bytes": 832601,
+      "sha256": "38f7f36b13cfc585419b2e679394792f4d2fb925a1da34b19b17dd2ce36cd1ae"
     },
     {
       "path": "assets/trailer-poster.jpg",
-      "bytes": 78175,
-      "sha256": "43f39082866d81c2390beb793d407329e4387d2197411bb747b0e526e23490de"
+      "bytes": 126791,
+      "sha256": "7d934346041992421bd176628282beeb18e121550a93d275ca66864b8b497e2d"
     },
     {
       "path": "assets/trailer.mp4",
-      "bytes": 15705084,
-      "sha256": "335280ef17183054a434c5610d74043ca000760111068453ffefdd7245d09bf3"
+      "bytes": 15231497,
+      "sha256": "589e6f482c2ac94b07f07d7d09b70ca0b912822e564b7941c209ef0dff438ed1"
     },
     {
       "path": "assets/ui-polish.css",
@@ -380,29 +380,19 @@
       "sha256": "f5a0ab23700d73b828c433153040d2c2ed4cfdc4e2e785136a443a2fa8d74022"
     },
     {
-      "path": "assets/world-gallery.css",
-      "bytes": 1858,
-      "sha256": "760a4f0bdbd87d08b5be0b58a7a9e44f5b6d413d609e1b7a978e4beff7577175"
-    },
-    {
-      "path": "assets/world-gallery.js",
-      "bytes": 6507,
-      "sha256": "78d0a394b01be957dbef6416db1b86c8e2d1249ea00248130d6f190134d6c0c3"
-    },
-    {
       "path": "assets/world-gallery/01.webp",
-      "bytes": 360644,
-      "sha256": "ab2a21fd75e494aa09d50b2960bc6fbc8e5e808e1dc2a4749843cd84ea0a3caf"
+      "bytes": 382490,
+      "sha256": "ade95025ee8a1a99b077fa5f1a23147304896c45abac1ce01ad3a7bf898b33dc"
     },
     {
       "path": "assets/world-gallery/02.webp",
-      "bytes": 352586,
-      "sha256": "c59d5d47fe95988c415d7e53b7161ae43faba5f4f7d45646d581f5244f33ac7b"
+      "bytes": 377838,
+      "sha256": "84dac8c360c2eabb3d8c407c424e445e6c454d8c06abe8383e79121bb0ce7b36"
     },
     {
       "path": "assets/world-gallery/03.webp",
-      "bytes": 354220,
-      "sha256": "49968d4849b18939b389cd9e9f1d4ba5d80a2254c636b84efac0678b720e7339"
+      "bytes": 366022,
+      "sha256": "adb3594b80f85436a0919c3a392a13ed7b6eab0dcf0d254d5c596a30b5196d02"
     },
     {
       "path": "assets/world-gallery/04.webp",
@@ -411,13 +401,23 @@
     },
     {
       "path": "assets/world-gallery/05.webp",
-      "bytes": 315728,
-      "sha256": "6533a4db04c88b323ade23741809ffa9e2e8d3214ef05b3341935b733fac966a"
+      "bytes": 333850,
+      "sha256": "229a4b3a1743d4288e998facd464db4bff942ec005146525aa56f7c3b540e22a"
     },
     {
       "path": "assets/world-gallery/06.webp",
       "bytes": 347018,
       "sha256": "b2749891c44d7923ee2e782269dbc53320d76210d31f40cf52be677d59f1686b"
+    },
+    {
+      "path": "assets/world-gallery.css",
+      "bytes": 1858,
+      "sha256": "760a4f0bdbd87d08b5be0b58a7a9e44f5b6d413d609e1b7a978e4beff7577175"
+    },
+    {
+      "path": "assets/world-gallery.js",
+      "bytes": 6507,
+      "sha256": "78d0a394b01be957dbef6416db1b86c8e2d1249ea00248130d6f190134d6c0c3"
     },
     {
       "path": "favicon.svg",
@@ -436,13 +436,13 @@
     },
     {
       "path": "index.html",
-      "bytes": 21306,
-      "sha256": "b7768ad065af1ef8df23a0fb68857e7cbaab1cfe408e8f1f6fa8146586b330dd"
+      "bytes": 21357,
+      "sha256": "2d8fcd7e5c63121b00c840a5c4d2b579bfee6a80e26523fa3b5a5362b42e2427"
     },
     {
       "path": "site-config.js",
-      "bytes": 4217,
-      "sha256": "0250f677fd837187242535f6dc8f7c376ea663c748a21b79327217111033b923"
+      "bytes": 4281,
+      "sha256": "c1e7c2597e1e6e67d772e4efa233e83d66d925870003f621ea5adab1521ba2ad"
     },
     {
       "path": "style.css",
