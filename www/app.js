@@ -40,30 +40,8 @@
   matchMedia('(min-width: 701px)').addEventListener('change',event=>{if(event.matches&&menu.open)menu.close();});
 
   const downloadDialog = $('#download-dialog');
-  const openDownloads = platform => {
-    const platforms = platform ? [platform] : ['ios','android'];
-    const container = $('#download-options');
-    container.replaceChildren();
-    platforms.forEach(key=>{
-      const item = config.downloads[key];
-      const option=document.createElement('div');option.className='platform-option';
-      const info=document.createElement('div');
-      const title=document.createElement('h3');title.textContent=item.name;
-      const details=document.createElement('p');details.textContent=[item.method,item.version,item.requirement].filter(Boolean).join(' · ');
-      info.append(title,details);option.append(info);
-      const url = safeUrl(item.url);
-      const action=document.createElement(url?'a':'button');action.className='pill';
-      if(url){action.href=url;action.target='_blank';action.rel='noopener';action.textContent='前往共创空间 ↗';}
-      else {action.disabled=true;action.textContent='入口准备中';}
-      option.append(action);container.append(option);
-    });
-    $('#download-note').textContent=platforms.some(key=>!safeUrl(config.downloads[key].url))
-      ?'内测入口准备中。可在 QQ 搜索官方共创群 1094452643，了解开放情况。'
-      :'官方 QQ 共创群：1094452643。进入星黎频道，点击「共创群」查看入群方式；资格与安装以群内公告为准。';
-    openDialog(downloadDialog);
-  };
-  $$('[data-download]').forEach(button=>button.addEventListener('click',()=>openDownloads()));
-  $$('[data-platform]').forEach(button=>button.addEventListener('click',()=>openDownloads(button.dataset.platform)));
+  const openDownloads = () => openDialog(downloadDialog);
+  $$('[data-download]').forEach(button=>button.addEventListener('click',openDownloads));
 
   const heroVideo=$('#hero-video');
   const heroArt=heroVideo.parentElement;

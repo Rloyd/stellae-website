@@ -195,7 +195,7 @@ def render_segment(spec, folder):
     return out
 
 
-def render_outro(folder):
+def render_outro(folder, show_note=True):
     bg=Image.open(KV).convert("RGBA")
     bg=bg.resize((art.W,round(bg.height*art.W/bg.width)))
     canvas=Image.new("RGBA",(art.W,art.H),art.NIGHT0+(255,))
@@ -210,7 +210,8 @@ def render_outro(folder):
     d.text((120,390),"让相遇，",font=art.serif(96),fill=art.INK1)
     art.grad_text(text,(120,510),"成为日常。",art.serif(96))
     d.text((124,690),"星黎 · 参与内测",font=art.sans(35),fill=art.INK1)
-    d.text((124,758),"品牌视觉 / AI COMPANION",font=art.sans(22),fill=art.INK2)
+    if show_note:
+        d.text((124,758),"品牌视觉 / AI COMPANION",font=art.sans(22),fill=art.INK2)
     b,t=folder/'outro-bg.png',folder/'outro-text.png';canvas.save(b);text.save(t)
     out=folder/'segment-outro.mp4'
     graph=("[0:v]scale=3840:2160,zoompan=z='1+0.06*on/210':"
