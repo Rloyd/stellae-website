@@ -37,7 +37,7 @@ def four_star(d, x, y, r, fill):
     d.polygon([(x, y - r), (x + k, y - k), (x + r, y), (x + k, y + k), (x, y + r), (x - k, y + k), (x - r, y), (x - k, y - k)], fill=fill)
 
 def background(glow_center, with_phone=True, seed=7):
-    random.seed(seed)
+    rng = random.Random(seed)
     im = Image.new("RGBA", (W, H), NIGHT0 + (255,))
     im.alpha_composite(radial((W, H), glow_center, 760, VIOLET_DEEP, 0.42))
     im.alpha_composite(radial((W, H), (1700, 140), 620, PINK, 0.10))
@@ -49,11 +49,11 @@ def background(glow_center, with_phone=True, seed=7):
     for y in range(0, H, 120):
         d.line((0, y, W, y), fill=(163, 172, 194, 9))
     for _ in range(260):                            # 星点
-        x, y = random.randrange(W), random.randrange(H)
-        a = random.randint(40, 190); s = random.choice([1, 1, 1, 2])
+        x, y = rng.randrange(W), rng.randrange(H)
+        a = rng.randint(40, 190); s = rng.choice([1, 1, 1, 2])
         d.ellipse((x, y, x + s, y + s), fill=(238, 241, 248, a))
     for _ in range(7):
-        four_star(d, random.randrange(W), random.randrange(H), random.choice([5, 7, 9]), (238, 241, 248, random.randint(70, 140)))
+        four_star(d, rng.randrange(W), rng.randrange(H), rng.choice([5, 7, 9]), (238, 241, 248, rng.randint(70, 140)))
     im.alpha_composite(fx)
     if with_phone:                                  # 手机外框光晕 + 描边
         glow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
